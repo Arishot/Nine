@@ -1,0 +1,102 @@
+procedure TForm1.Button1Click(Sender: TObject);
+
+var
+
+ pol: array[0..2] of TPoint;
+
+begin
+
+ pol[0].x:= 10;
+
+ pol[0].y:= 20;
+
+ pol[1].x:= 70;
+
+ pol[1].y:= 20;
+
+ pol[2].x:= 70;
+
+ pol[2].y:= 70;
+
+ with Image1.Canvas do
+
+  begin
+
+   Brush.Style:= bsClear;
+
+   Pen.Color:= clRed;
+
+   Polygon(pol);
+
+  end;
+
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+
+begin
+
+ with Image1.Canvas do
+
+  begin
+
+   Brush.Style:= bsClear;
+
+   Pen.Color:= clGreen;
+
+   Rectangle(200, 200, 250, 250);
+
+  end;
+
+end;
+
+procedure TForm1.Button3Click(Sender: TObject);
+
+begin
+
+ with Image1.Canvas do
+
+  begin
+
+   Brush.Style:= bsClear;
+
+   Pen.Color:= clBlue;
+
+   Ellipse(170, 170, 100, 100);
+
+  end;
+
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+
+var
+
+ x,y,z: uint;
+
+ cnv: TBitmap;
+
+begin
+
+ cnv:= TBitmap.Create;
+
+ cnv.Assign(Image1.Picture.Bitmap);
+
+ for X:=0 to image1.picture.width-1 do
+
+  for Y:=0 to image1.picture.Height-1 do
+
+   begin
+
+    z:= image1.Canvas.Pixels[x,y];
+
+    cnv.Canvas.Pixels[y,x]:= z;
+
+   end;
+
+ Image1.Picture.Bitmap.Assign(cnv);
+
+ cnv.Free;
+
+end;
+
